@@ -21,7 +21,7 @@ class ApplicationController < Sinatra::Base
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
     end
-    redirect 'user/home'
+    redirect '/home'
   end
 
   get '/signup' do
@@ -31,9 +31,18 @@ class ApplicationController < Sinatra::Base
   post '/signup' do
     user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
     if user.save
-      redirect 'user/home'
+      redirect '/home'
     else
       redirect 'user/signup'
     end
   end
+
+  get '/home' do
+    erb :'user/home'
+  end
+
+  get '/account/edit' do
+    erb :'user/edit'
+  end
+
 end
