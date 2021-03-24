@@ -1,10 +1,8 @@
 class CreatePokemon < ActiveRecord::Migration[5.2]
   def change
-    create_table :pokemon do |t|
+    create_table :pokemons do |t|
       t.string :name
-      t.string :type
-      t.string :abilities
-      t.string :moves
+      t.string :url
     end
   end
 end
