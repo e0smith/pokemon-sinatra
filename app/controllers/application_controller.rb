@@ -38,11 +38,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/home' do
-    erb :'user/home'
+    redirect '/'
   end
 
   get '/account/edit' do
     erb :'user/edit'
   end
+
 
 end

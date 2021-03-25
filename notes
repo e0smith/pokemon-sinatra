@@ -1,2 +1,9 @@
-create page that lists pokemon names
-click on pokemon (atag)
+create table teams
+use foreign keys
+-----------------
+setup logout
+check CRUD for pokemon teams
+validations - make sure user cant access someone elses team
+
+check project requirements-
+https://learning.flatironschool.com/courses/2611/pages/sinatra-content-management-system-app-assessment?module_item_id=148057
