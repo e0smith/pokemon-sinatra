@@ -1,3 +1,4 @@
+require 'pry'
 require './config/environment'
 
 class UsersController < ApplicationController
@@ -6,8 +7,9 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+        user = User.new(params["user"])
         if user.save
+          session["user_id"] = user.id
           redirect '/home'
         else
           redirect 'user/signup'
