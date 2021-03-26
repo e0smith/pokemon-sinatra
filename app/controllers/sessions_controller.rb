@@ -1,21 +1,24 @@
 require './config/environment'
 class SessionsController < ApplicationController
     get '/login' do
+        redirect_if_logged_in
         erb :'sessions/new'
     end
 
     post '/login' do
+        redirect_if_logged_in
         user = User.find_by(email: params["user"]["email"])
+
         if user && user.authenticate(params["user"]["password"])
             session["user_id"] = user.id
-            redirect '/pokedex' #home not setup correctly (used as login or signup page)
+            redirect "/home"
         else
-            redirect '/login'
+            redirect "/login"
         end
     end
-
-    delete '/logout' do
-        session.delete("user_id")
-        redirect '/login'
+    
+    get '/logout' do
+        session.clear
+        redirect "/login"
     end
 end

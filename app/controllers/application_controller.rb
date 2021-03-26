@@ -14,21 +14,25 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/home' do
-    redirect '/'
+    erb :'user/home'
   end
 
-  get '/account/edit' do
-    erb :'user/edit'
-  end
-
-  helpers do 
+  helpers do
     def current_user
-      @current_user ||= User.find_by_id(session["user_id"])
+        @current_user ||= User.find_by_id(session["user_id"])
     end
 
     def logged_in?
-      !!current_user
+        !!current_user
     end
-  end
+
+    def redirect_if_not_logged_in
+        redirect "/login" if !logged_in?
+    end
+
+    def redirect_if_logged_in
+        redirect "/home" if logged_in?
+    end
+end
 
 end

@@ -64,14 +64,12 @@
       </div>
     </nav>
         <%= yield %>
-        <% if logged_in? %> 
+        <% if logged_in? %>
         <br><br>
-        <form action="/logout" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Logout"
-          
+        <form action="/logout" method="get">
+            <input type="submit" value="Logout">
         </form>
-        <% end %>
+    <% end %>
 
       <footer class="branding">
         <small>&copy; 2021 <strong>PokeTeams</strong></small>
