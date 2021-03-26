@@ -1,7 +1,6 @@
 create table teams
 use foreign keys
 -----------------
-setup logout
 check CRUD for pokemon teams
 validations - make sure user cant access someone elses team
 

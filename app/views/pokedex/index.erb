@@ -1,6 +1,6 @@
 <h1> PokeDex </h1>
 <ol>
-<% @pokemons.each do |x| %>
-<li><a href= "#"><%= x.name.capitalize %></a></li>
+<% @pokemons.each do |pokemon| %>
+<li><a href= "/pokedex/<%=pokemon.id%>"><%= pokemon.name.capitalize %></a></li>
 <% end %>
 <ol>

@@ -3,6 +3,9 @@ require './config/environment'
 
 class UsersController < ApplicationController
 
+    @pokemon_data = []
+
+    
     get '/signup' do
         erb :'user/signup'
     end
