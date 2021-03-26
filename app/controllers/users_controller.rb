@@ -2,6 +2,8 @@ require 'pry'
 require './config/environment'
 
 class UsersController < ApplicationController
+
+    
     get '/signup' do
         erb :'user/signup'
     end
