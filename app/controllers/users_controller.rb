@@ -3,7 +3,7 @@ require './config/environment'
 
 class UsersController < ApplicationController
 
-    
+
     get '/signup' do
         erb :'user/signup'
     end
@@ -12,9 +12,10 @@ class UsersController < ApplicationController
         user = User.new(params["user"])
         if user.save
           session["user_id"] = user.id
-          redirect '/home'
+          binding.pry
+          redirect '/pokedex'
         else
-          redirect 'user/signup'
+          redirect '/signup'
         end
     end
 end
