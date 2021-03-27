@@ -9,12 +9,15 @@ class PokemonsController < ApplicationController
     end
 
     get '/pokedex/:id' do
+      @abilities = []
+      @types = []
       pokemon = Pokemon.find(params[:id])
       @info = HTTParty.get(pokemon.url)
-      @info["abilities"]
-      @abilities = []
       @info["abilities"].each do |x|
           @abilities << x["ability"]["name"]
+      end
+      @info["types"].each do |x|
+        @types << x["type"]["name"]
       end
       erb :'pokedex/view'
     end
