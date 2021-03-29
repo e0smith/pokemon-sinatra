@@ -2,3 +2,6 @@
 <a href= "/pokedex/<%=x.id%>"><%=x.name.capitalize %></a>
 <% end %>
 
+<form action="/teams/<%=@id%>/pokemon/pokedex" method="get">
+<input type='submit' value='Add Pokemon'>
+</form>

@@ -18,7 +18,7 @@ class PokemonsController < ApplicationController
   #---------------------POKEMON TEAMS CODE START-----------------------
     get '/teams' do 
       @teams = current_user.teams
-      erb :'team/home' #lists all current users teams
+      erb :'team/view' #lists all current users teams
     end
 
     get '/teams/new' do
@@ -32,12 +32,26 @@ class PokemonsController < ApplicationController
 
     get '/teams/:id/pokemon' do
       @pokemon = current_user.teams.find(params[:id]).pokemons
+      @id = params[:id]
       erb :'team/pokemon'
     end
 
     delete '/teams/:id' do
       @teams.destroy
       redirect '/teams'
+    end
+
+    get '/teams/:id/pokemon/pokedex' do
+      @pokemons = Pokemon.all
+      @id = params[:id]
+      erb :'pokedex/index'
+    end
+
+    post '/teams/:id/pokemon/pokedex' do
+      params[:team][:pokemon_ids].each do |id|
+        TeamPokemon.create(team_id: params[:id], pokemon_id: id)
+      end
+      redirect "/teams"
     end
 
   #---------------------POKEMON TEAMS CODE END-------------------------
