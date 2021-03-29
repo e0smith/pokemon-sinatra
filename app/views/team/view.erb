@@ -3,4 +3,11 @@
 <br>
 <% @teams.each do |x| %>
 <a href="/teams/<%= x.id %>/pokemon"> <%= x.team_name%></a><br>
+
+<form method="post" action="/teams/<%= x.id %>">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete Team">
+</form>
 <% end %>
+
+

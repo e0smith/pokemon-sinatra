@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, ENV["SESSION_SECRET"]
+    set :session_secret, ENV["I_CrY1d-Ov-eR-tHI$/pRoj3cT"]
   end
 
   get "/" do
@@ -34,5 +34,4 @@ class ApplicationController < Sinatra::Base
       current_user.teams.first.pokemons
     end
   end
-
 end

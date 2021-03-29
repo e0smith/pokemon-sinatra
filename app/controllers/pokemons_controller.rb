@@ -36,11 +36,6 @@ class PokemonsController < ApplicationController
       erb :'team/pokemon'
     end
 
-    delete '/teams/:id' do
-      @teams.destroy
-      redirect '/teams'
-    end
-
     get '/teams/:id/pokemon/pokedex' do
       @pokemons = Pokemon.all
       @id = params[:id]
@@ -54,5 +49,16 @@ class PokemonsController < ApplicationController
       redirect "/teams"
     end
 
+    delete '/teams/:id' do
+      @team = Team.find(params[:id])
+      @team.destroy
+      redirect '/teams'
+    end
+
+    delete '/teams/:id/pokemon/:pokemon_id' do
+      @pokemon = TeamPokemon.find_by(team_id: params[:id], pokemon_id: params[:pokemon_id])
+      @pokemon.destroy
+      redirect "/teams/#{params[:id]}/pokemon"
+    end
   #---------------------POKEMON TEAMS CODE END-------------------------
 end
