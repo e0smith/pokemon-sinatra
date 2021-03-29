@@ -1,4 +1,5 @@
 require './config/environment'
+require 'pry'
 class SessionsController < ApplicationController
     get '/login' do
         redirect_if_logged_in
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
 
         if user && user.authenticate(params["user"]["password"])
             session["user_id"] = user.id
-            redirect "/home"
+            redirect "/teams"
         else
             redirect "/login"
         end
@@ -21,4 +22,5 @@ class SessionsController < ApplicationController
         session.clear
         redirect "/login"
     end
+    
 end

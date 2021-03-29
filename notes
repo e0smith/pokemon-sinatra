@@ -11,3 +11,5 @@ https://learning.flatironschool.com/courses/2611/pages/sinatra-content-managemen
 create method fetch teams
 takes current users associated teams 
 (to fetch teams call 'current_user.teams)
+
+

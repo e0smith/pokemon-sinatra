@@ -13,10 +13,6 @@ class ApplicationController < Sinatra::Base
     erb :'user/index'
   end
 
-  get '/home' do
-    erb :'user/home'
-  end
-
   helpers do
     def current_user
         @current_user ||= User.find_by_id(session["user_id"])
@@ -32,6 +28,10 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_logged_in
         redirect "/home" if logged_in?
+    end
+
+    def fetch_teams
+      current_user.teams.first.pokemons
     end
   end
 

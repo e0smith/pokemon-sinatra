@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         user = User.new(params["user"])
         if user.save
           session["user_id"] = user.id
-          redirect '/home'
+          redirect '/teams'
         else
           redirect '/signup'
         end

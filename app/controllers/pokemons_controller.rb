@@ -1,4 +1,5 @@
 require './config/environment'
+require './app/models/pokemon.rb'
 require 'pry'
 class PokemonsController < ApplicationController
 
@@ -9,27 +10,35 @@ class PokemonsController < ApplicationController
     end
 
     get '/pokedex/:id' do
-      @abilities = []
-      @types = []
-      @moves = []
-      pokemon = Pokemon.find(params[:id])
-      @info = HTTParty.get(pokemon.url)
-      @info["abilities"].each do |x|
-          @abilities << x["ability"]["name"]
-      end
-      @info["types"].each do |x|
-        @types << x["type"]["name"]
-      end
-      @info["moves"].each do |x|
-        @moves << x["move"]["name"]
-      end
+      @info = Pokemon.pokemon_data(params[:id])
       erb :'pokedex/view'
     end
   #-------------------------POKEDEX CODE END---------------------------
 
   #---------------------POKEMON TEAMS CODE START-----------------------
     get '/teams' do 
-      erb :home
+      @teams = current_user.teams
+      erb :'team/home' #lists all current users teams
     end
-    
+
+    get '/teams/new' do
+      erb :'team/newteam' 
+    end
+
+    post '/teams/new' do 
+      Team.create(team_name: params[:team_name] , user_id: current_user.id)
+      redirect '/teams'
+    end
+
+    get '/teams/:id/pokemon' do
+      @pokemon = current_user.teams.find(params[:id]).pokemons
+      erb :'team/pokemon'
+    end
+
+    delete '/teams/:id' do
+      @teams.destroy
+      redirect '/teams'
+    end
+
+  #---------------------POKEMON TEAMS CODE END-------------------------
 end

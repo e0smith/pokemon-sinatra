@@ -1,0 +1,6 @@
+<h1><a href="/teams/new">Create New Team</a></h1>
+<br>
+<br>
+<% @teams.each do |x| %>
+<a href="/teams/<%= x.id %>/pokemon"> <%= x.team_name%></a><br>
+<% end %>
