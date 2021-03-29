@@ -1,5 +1,6 @@
 class Team < ActiveRecord::Base
-    has_many :pokemons
     belongs_to :user
+    has_many :team_pokemon
+    has_many :pokemons, through: :team_pokemon
     
 end

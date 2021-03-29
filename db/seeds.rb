@@ -11,10 +11,12 @@ end
 
 def fetch_abilities(results)
     results.each do |x|
-        response = HTTParty.get(x["url"])
-        binding.pry
-        Pokemon.create(response) 
+        Pokemon.create(name: x["name"], url: x["url"])
     end
+    # results.each do |x|
+    #     response = HTTParty.get(x["url"])
+    #     Pokemon.create(response) 
+    # end
 end
 
 fetch_pokemon

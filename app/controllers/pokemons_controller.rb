@@ -28,5 +28,8 @@ class PokemonsController < ApplicationController
   #-------------------------POKEDEX CODE END---------------------------
 
   #---------------------POKEMON TEAMS CODE START-----------------------
+    get '/teams' do 
+      erb :home
+    end
     
 end

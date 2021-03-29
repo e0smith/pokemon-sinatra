@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
     has_secure_password
-    has_many :pokemons
-    has_one :teams
+    has_many :teams
 end
