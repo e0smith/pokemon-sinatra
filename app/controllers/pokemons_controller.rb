@@ -6,12 +6,12 @@ class PokemonsController < ApplicationController
   #-------------------------POKEDEX CODE START--------------------------
     get '/pokedex' do
         @pokemons = Pokemon.all
-        erb :'pokedex/index'
+        erb :'pokedex-no-check/index'
     end
 
     get '/pokedex/:id' do
       @info = Pokemon.pokemon_data(params[:id])
-      erb :'pokedex/view'
+      erb :'pokedex-no-check/view'
     end
   #-------------------------POKEDEX CODE END---------------------------
 
@@ -39,7 +39,7 @@ class PokemonsController < ApplicationController
     get '/teams/:id/pokemon/pokedex' do
       @pokemons = Pokemon.all
       @id = params[:id]
-      erb :'pokedex/index'
+      erb :'team/pokedex/index'
     end
 
     post '/teams/:id/pokemon/pokedex' do
