@@ -1,9 +1,10 @@
 <h1> PokeDex </h1>
-
 <form method="POST" action="/teams/<%= @id %>/pokemon/pokedex" >
+<input type="submit" value="Add to Team"><br><br>
 <% @pokemons.each do |pokemon| %>
 
-  <input type="checkbox" name="team[pokemon_ids][]" id="<%= pokemon.id %>" value="<%= pokemon.id %>"><a href= "/pokedex/<%=pokemon.id%>"><%= pokemon.name.capitalize %></a><br>
-<% end %> 
+  <input type="checkbox" name="team[pokemon_ids][]" id="<%= pokemon.id %>" value="<%= pokemon.id %>"><a href= "/pokedex/<%=pokemon.id%>"> <%= pokemon.name.capitalize %></a><br><br>
+<% end %>
+<br> 
 <input type="submit" value="Add to Team">
 </form>

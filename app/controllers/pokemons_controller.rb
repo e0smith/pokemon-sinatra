@@ -18,7 +18,7 @@ class PokemonsController < ApplicationController
   #---------------------POKEMON TEAMS CODE START-----------------------
     get '/teams' do 
       @teams = current_user.teams
-      erb :'team/view' #lists all current users teams
+      erb :'team/view' 
     end
 
     get '/teams/new' do

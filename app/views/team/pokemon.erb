@@ -1,11 +1,12 @@
 <% @pokemon.each do |x| %>
-<a href= "/pokedex/<%=x.id%>"><%=x.name.capitalize %></a><br>
+<br><a href= "/pokedex/<%=x.id%>"><%=x.name.capitalize %></a><br>
 <form method="post" action="/teams/<%= @id %>/pokemon/<%= x.id %>">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="Delete Pokemon">
 </form>
 <% end %>
-
+<br>
+<br>
 <form action="/teams/<%=@id%>/pokemon/pokedex" method="get">
 <input type='submit' value='Add Pokemon'>
 </form>
