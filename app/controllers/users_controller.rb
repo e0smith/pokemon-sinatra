@@ -3,7 +3,7 @@ require './config/environment'
 
 class UsersController < ApplicationController
 
-    @pokemon_data = []
+    # @pokemon_data = []
 
     
     get '/signup' do
@@ -20,7 +20,4 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/account/edit' do
-        erb :'user/edit'
-    end
 end
